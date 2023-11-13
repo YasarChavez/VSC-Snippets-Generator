@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Snippets Generator</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h2>Snippets Generator</h2>
+            <form id="snippetForm">
+                <div class="form-group">
+                    <label for="snippetName">Snippet Name:</label>
+                    <input type="text" class="form-control" id="snippetName" placeholder="Enter snippet name" />
+                </div>
+                <div class="form-group">
+                    <label for="prefix">Prefix:</label>
+                    <input type="text" class="form-control" id="prefix" placeholder="Enter prefix" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" id="description" placeholder="Enter description" />
+                </div>
+                <div class="form-group">
+                    <label for="htmlCode">HTML Code:</label>
+                    <textarea class="form-control" id="htmlCode" placeholder="Enter HTML code"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="generateSnippet()">Generate Snippet</button>
+                <button type="button" class="btn btn-success" onclick="copySnippet()">Copy Snippet</button>
+            </form>
+
+            <hr />
+
+            <h3>Snippet Result:</h3>
+            <pre id="snippetResult"></pre>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
