@@ -8,8 +8,9 @@
         <link rel="stylesheet" type="text/css" href="styles.css" />
     </head>
     <body>
-        <div class="container">
-            <h2>Snippets Generator</h2>
+        <div class="container intro my-1 mx-auto align-content-center">
+            <h2 class="text-center">Snippets Generator</h2>
+            <br>
             <form id="snippetForm">
                 <div class="form-group">
                     <label for="snippetName">Snippet Name:</label>
@@ -27,14 +28,29 @@
                     <label for="htmlCode">HTML Code:</label>
                     <textarea class="form-control" id="htmlCode" placeholder="Enter HTML code"></textarea>
                 </div>
-                <button type="button" class="btn btn-primary" onclick="generateSnippet()">Generate Snippet</button>
-                <button type="button" class="btn btn-success" onclick="copySnippet()">Copy Snippet</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSnippet" onclick="generateSnippet()">Generate Snippet</button>
             </form>
-
-            <hr />
-
-            <h3>Snippet Result:</h3>
-            <pre id="snippetResult"></pre>
+            <!-- Modal -->
+            <div class="modal fade" id="modalSnippet" tabindex="-1" aria-labelledby="modalSnippetLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modalSnippetLabel">Snippet Result:</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!--  -->
+                            <pre id="snippetResult"></pre>
+                            <!--  -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" onclick="copySnippet()">Copy Snippet</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
