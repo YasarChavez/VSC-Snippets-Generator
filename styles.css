@@ -1,8 +1,22 @@
 body {
-    padding: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
+    /* padding: 20px; */
+    background-color: #f2f2f2;
+}
+.form-group {
+    margin-bottom: 10px;
+}
+.intro p {
+    color: #f2f2f2;
+}
+.intro {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    border-radius: 25px;
+}
+textarea {
+    resize: none;
+    width: 300px; /* Ancho del textarea en píxeles o cualquier otra unidad de medida */
+    height: 150px; /* Altura del textarea en píxeles o cualquier otra unidad de medida */
+}
