@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="container intro my-1 mx-auto align-content-center">
-            <h2 class="text-center">Snippets Generator</h2>
+            <h2 class="text-center">VSCode Snippets Generator</h2>
             <br>
             <form id="snippetForm">
                 <div class="form-group">
@@ -28,11 +28,16 @@
                     <label for="htmlCode">Code:</label>
                     <textarea class="form-control" id="htmlCode" placeholder="Enter code"></textarea>
                 </div>
+                <p>To declare a placeholder (ctrl + y) : ${1:example}</p>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSnippet" onclick="generateSnippet()">Generate Snippet</button>
+                <!-- Button Clean -->
+                <button type="button" class="btn btn-warning" onclick="clearCode()">Clear Code</button>
+                <button type="button" class="btn btn-danger" onclick="clearInputs()">Clear Inputs</button>
+                </div>
             </form>
             <!-- Modal -->
-            <div class="modal fade" id="modalSnippet" tabindex="-1" aria-labelledby="modalSnippetLabel" aria-hidden="true">
+            <div class="modal fade modal-xl" id="modalSnippet" tabindex="-1" aria-labelledby="modalSnippetLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
