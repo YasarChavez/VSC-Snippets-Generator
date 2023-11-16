@@ -1,25 +1,38 @@
 function generateSnippet() {
-    const snippetName = document.getElementById("snippetName").value;
-    const prefix = document.getElementById("prefix").value;
-    const description = document.getElementById("description").value;
-    const htmlCode = document.getElementById("htmlCode").value;
+  const snippetName = document.getElementById("snippetName").value;
+  const prefix = document.getElementById("prefix").value;
+  const description = document.getElementById("description").value;
+  const htmlCode = document.getElementById("htmlCode").value;
 
-    const snippetCode = `"${snippetName}": {
-  "prefix": "${prefix}",
-  "body": [
-    ${JSON.stringify(htmlCode)}
-  ],
-  "description": "${description}"
-  }`;
+  // Aplicar transformaciones al código HTML
+  const separatedSnippet = htmlCode
+      .replace(/\\/g, "\\\\")
+      .replace(/"/g, '\\"')
+      .split("\n");
+  const separatedSnippetLength = separatedSnippet.length;
 
-    document.getElementById("snippetResult").textContent = snippetCode;
+  // Agregar comillas y sangrado a cada línea de HTML
+  const formattedHtmlLines = separatedSnippet.map((line, index) => {
+      return index === separatedSnippetLength - 1 ? `"${line}"` : `"${line}",`;
+  }).join('\n');
 
-    // Limpiar campos del formulario
-    document.getElementById("snippetName").value = "";
-    document.getElementById("prefix").value = "";
-    document.getElementById("description").value = "";
-    document.getElementById("htmlCode").value = "";
+  const snippetCode = `"${snippetName}": {
+"prefix": "${prefix}",
+"body": [
+  ${formattedHtmlLines}
+],
+"description": "${description}"
+}`;
+
+  document.getElementById("snippetResult").textContent = snippetCode;
+
+  // Limpiar campos del formulario
+  document.getElementById("snippetName").value = "";
+  document.getElementById("prefix").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("htmlCode").value = "";
 }
+
 
 function copySnippet() {
     const snippetResult = document.getElementById("snippetResult");
