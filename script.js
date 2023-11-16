@@ -26,21 +26,42 @@ function generateSnippet() {
 
   document.getElementById("snippetResult").textContent = snippetCode;
 
+
+}
+function clearInputs(){
+    // Limpiar campos del formulario
+    document.getElementById("snippetName").value = "";
+    document.getElementById("prefix").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("htmlCode").value = "";
+}
+
+function clearCode(){
   // Limpiar campos del formulario
-  document.getElementById("snippetName").value = "";
-  document.getElementById("prefix").value = "";
-  document.getElementById("description").value = "";
   document.getElementById("htmlCode").value = "";
 }
 
-
 function copySnippet() {
-    const snippetResult = document.getElementById("snippetResult");
-    const range = document.createRange();
-    range.selectNode(snippetResult);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
-    alert("Snippet copied to clipboard!");
+  const snippetResult = document.getElementById("snippetResult");
+  const range = document.createRange();
+  range.selectNode(snippetResult);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand("copy");
+  window.getSelection().removeAllRanges();
+  alert("Snippet copied to clipboard!");
 }
+
+document.getElementById("htmlCode").addEventListener("keydown", function(event) {
+  // Verificar si se presiona Ctrl + Y
+  if (event.ctrlKey && event.key === 'y') {
+    event.preventDefault(); // Evitar el comportamiento predeterminado (puede depender del navegador)
+    
+    // Agregar el marcador de posición al código HTML
+    const htmlCodeInput = document.getElementById("htmlCode");
+    const cursorPosition = htmlCodeInput.selectionStart;
+    const currentHtmlCode = htmlCodeInput.value;
+    const newHtmlCode = currentHtmlCode.substring(0, cursorPosition) + "${1:example}" + currentHtmlCode.substring(cursorPosition);
+    htmlCodeInput.value = newHtmlCode;
+  }
+});
